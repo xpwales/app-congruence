@@ -1,0 +1,10 @@
+CREATE TABLE `TEN_tenant` (
+  `TEN_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `TEN_id_hash` VARCHAR(32) NOT NULL,
+  `TEN_name_key` VARCHAR(32) NOT NULL,
+  `TEN_sys_admin_notes` VARCHAR(255) NULL,
+  PRIMARY KEY (`TEN_id`),
+  UNIQUE INDEX `TEN_name_key_UNIQUE` (`TEN_name_key` ASC),
+  UNIQUE INDEX `TEN_id_hash_UNIQUE` (`TEN_id_hash` ASC))
+  DEFAULT CHARACTER SET 'utf8' COLLATE utf8_general_ci
+  ENGINE = INNODB;
