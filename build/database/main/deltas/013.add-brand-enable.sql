@@ -1,0 +1,2 @@
+ALTER TABLE `BRND_brand`
+  ADD COLUMN `BRND_enabled` TINYINT NOT NULL AFTER `BRND_description`;
