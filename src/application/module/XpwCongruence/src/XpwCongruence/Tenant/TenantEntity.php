@@ -2,13 +2,14 @@
 
 namespace XpwCongruence\Tenant;
 
-use XpwCongruence\EnabledStatus\EnabledStatusAwareTrait;
 use XpwCongruence\IdHash\IdHashAwareTrait;
+use XpwCongruence\NameKey\NameKeyAwareTrait;
 use XpwCongruence\Timestamp\EntityTimestampTrait;
 
 class TenantEntity
 {
     use EntityTimestampTrait,
-        IdHashAwareTrait;
+        IdHashAwareTrait,
+        NameKeyAwareTrait;
 
 }//end class
