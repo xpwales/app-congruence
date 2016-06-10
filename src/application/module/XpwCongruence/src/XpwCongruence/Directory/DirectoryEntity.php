@@ -22,4 +22,4 @@ class DirectoryEntity
         EnabledStatusAwareTrait,
         EntityNameAwareTrait;
 
-}// end class
+}//end class
