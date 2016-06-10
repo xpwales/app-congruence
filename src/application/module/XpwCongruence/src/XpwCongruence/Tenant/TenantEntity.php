@@ -2,6 +2,7 @@
 
 namespace XpwCongruence\Tenant;
 
+use Xpwales\Identity\Identity\IdentityAwareTrait;
 use XpwCongruence\EntityName\EntityNameAwareTrait;
 use XpwCongruence\IdHash\IdHashAwareTrait;
 use XpwCongruence\NameKey\NameKeyAwareTrait;
@@ -12,7 +13,8 @@ class TenantEntity
     use EntityTimestampTrait,
         IdHashAwareTrait,
         NameKeyAwareTrait,
-        EntityNameAwareTrait;
+        EntityNameAwareTrait,
+        IdentityAwareTrait;
 
     /**
      * @var null|string
