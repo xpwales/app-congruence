@@ -1,0 +1,2 @@
+ALTER TABLE `GRP_group`
+  CHANGE COLUMN `GRP_enabled` `GRP_enabled` TINYINT NOT NULL;
