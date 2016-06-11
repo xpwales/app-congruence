@@ -6,6 +6,8 @@ use Xpwales\Identity\Identity\IdentityAwareAccessorInterface;
 use Xpwales\Identity\Identity\IdentityAwareTrait;
 use XpwCongruence\EnabledStatus\EnabledStatusAwareInterface;
 use XpwCongruence\EnabledStatus\EnabledStatusAwareTrait;
+use XpwCongruence\EntityDescription\EntityDescriptionAwareInterface;
+use XpwCongruence\EntityDescription\EntityDescriptionAwareTrait;
 use XpwCongruence\EntityName\EntityNameAwareInterface;
 use XpwCongruence\EntityName\EntityNameAwareTrait;
 use XpwCongruence\IdHash\IdHashAwareInterface;
@@ -18,12 +20,14 @@ class DirectoryEntity
                 IdHashAwareInterface,
                 EnabledStatusAwareInterface,
                 EntityNameAwareInterface,
-                EntityTimestampInterface
+                EntityTimestampInterface,
+                EntityDescriptionAwareInterface
 {
     use IdentityAwareTrait,
         IdHashAwareTrait,
         EnabledStatusAwareTrait,
         EntityNameAwareTrait,
-        EntityTimestampTrait;
+        EntityTimestampTrait,
+        EntityDescriptionAwareTrait;
 
 }//end class
