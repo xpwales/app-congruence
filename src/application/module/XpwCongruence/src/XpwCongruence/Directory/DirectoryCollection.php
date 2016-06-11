@@ -5,7 +5,9 @@ namespace XpwCongruence\Directory;
 use Zend\Stdlib\InitializableInterface;
 
 class DirectoryCollection
-    implements InitializableInterface
+    implements  InitializableInterface,
+                \IteratorAggregate,
+                DirectoryCollectionInterface
 {
     /**
      * @var \SplObjectStorage
@@ -18,6 +20,8 @@ class DirectoryCollection
     private $isInitialized = false;
 
     /**
+     * Idempotent initialization
+     *
      * @inheritdoc
      */
     public function init()
@@ -76,6 +80,30 @@ class DirectoryCollection
         $this->init();
 
         return $this->directories->contains($directory);
+    }
+
+    //
+    // Iteration
+    //
+
+    /**
+     * @inheritdoc
+     */
+    public function getIterator()
+    {
+        $this->init();
+
+        return $this->directories;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function count()
+    {
+        $this->init();
+
+        return $this->directories->count();
     }
 
 }//end class
