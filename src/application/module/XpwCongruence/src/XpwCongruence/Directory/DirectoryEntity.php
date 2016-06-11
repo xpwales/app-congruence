@@ -10,16 +10,20 @@ use XpwCongruence\EntityName\EntityNameAwareInterface;
 use XpwCongruence\EntityName\EntityNameAwareTrait;
 use XpwCongruence\IdHash\IdHashAwareInterface;
 use XpwCongruence\IdHash\IdHashAwareTrait;
+use XpwCongruence\Timestamp\EntityTimestampInterface;
+use XpwCongruence\Timestamp\EntityTimestampTrait;
 
 class DirectoryEntity
     implements IdentityAwareAccessorInterface,
                 IdHashAwareInterface,
                 EnabledStatusAwareInterface,
-                EntityNameAwareInterface
+                EntityNameAwareInterface,
+                EntityTimestampInterface
 {
     use IdentityAwareTrait,
         IdHashAwareTrait,
         EnabledStatusAwareTrait,
-        EntityNameAwareTrait;
+        EntityNameAwareTrait,
+        EntityTimestampTrait;
 
 }//end class
