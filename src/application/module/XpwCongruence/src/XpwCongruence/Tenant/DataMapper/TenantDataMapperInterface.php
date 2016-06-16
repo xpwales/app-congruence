@@ -3,6 +3,7 @@
 namespace XpwCongruence\Tenant\DataMapper;
 
 use Xpwales\Identity\Identity\IdentityInterface;
+use XpwCongruence\Tenant\DataMapper\Collection\TenantCollectionInterface;
 use XpwCongruence\Tenant\TenantEntity;
 
 interface TenantDataMapperInterface
@@ -38,7 +39,7 @@ interface TenantDataMapperInterface
     /**
      * @param array $options
      *
-     * @return array|\Traversable
+     * @return TenantCollectionInterface
      */
     public function findAll(array $options);
 
