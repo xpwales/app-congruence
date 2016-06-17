@@ -1,6 +1,6 @@
 <?php
 
-namespace XpwCongruence\Directory\EntityCollection;
+namespace XpwCongruence\Directory\Collection;
 
 interface DirectoryCollectionAwareInterface
     extends DirectoryCollectionSetterAwareInterface,
