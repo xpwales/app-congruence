@@ -1,7 +1,8 @@
 <?php
 
-namespace XpwCongruence\Directory;
+namespace XpwCongruence\Directory\EntityCollection;
 
+use XpwCongruence\Directory\DirectoryEntity;
 use Zend\Stdlib\InitializableInterface;
 
 class DirectoryCollection

@@ -2,7 +2,7 @@
 
 namespace XpwCongruence\Directory;
 
-use Xpwales\Identity\Identity\IdentityAwareAccessorInterface;
+use Xpwales\Identity\Identity\IdentityAwareInterface;
 use Xpwales\Identity\Identity\IdentityAwareTrait;
 use XpwCongruence\EnabledStatus\EnabledStatusAwareInterface;
 use XpwCongruence\EnabledStatus\EnabledStatusAwareTrait;
@@ -16,7 +16,7 @@ use XpwCongruence\Timestamp\EntityTimestampInterface;
 use XpwCongruence\Timestamp\EntityTimestampTrait;
 
 class DirectoryEntity
-    implements IdentityAwareAccessorInterface,
+    implements IdentityAwareInterface,
                 IdHashAwareInterface,
                 EnabledStatusAwareInterface,
                 EntityNameAwareInterface,

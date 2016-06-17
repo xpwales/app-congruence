@@ -1,6 +1,6 @@
 <?php
 
-namespace XpwCongruence\Directory;
+namespace XpwCongruence\Directory\EntityCollection;
 
 interface DirectoryCollectionInterface extends \Countable, \Traversable
 {
