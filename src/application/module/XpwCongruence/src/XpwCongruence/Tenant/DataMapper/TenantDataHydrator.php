@@ -55,8 +55,15 @@ class TenantDataHydrator implements TenantDataHydratorInterface
     {
         $data = [];
 
-        $data['TEN_id'] = current($tenant->getIdentity()->getValues());
+        if ($tenant->getIdentity()->isComplete() === true) {
+            $data['TEN_id'] = current($tenant->getIdentity()->getValues());
+        }
 
+        $data['TEN_id_hash']            = $tenant->getIdHash();
+        $data['TEN_name_key']           = $tenant->getNameKey();
+        $data['TEN_created_timestamp']  = $tenant->getCreatedTimestamp()->getTimestamp();
+        $data['TEN_modified_timestamp'] = $tenant->getModifiedTimestamp()->getTimestamp();
+        $data['TEN_sys_admin_notes']    = $tenant->getSysAdminNotes();
 
         return $data;
     }

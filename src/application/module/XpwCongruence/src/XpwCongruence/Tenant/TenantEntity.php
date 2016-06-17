@@ -2,9 +2,8 @@
 
 namespace XpwCongruence\Tenant;
 
-use Xpwales\Identity\Identity\IdentityAwareAccessorInterface;
+use Xpwales\Identity\Identity\IdentityAwareInterface;
 use Xpwales\Identity\Identity\IdentityAwareTrait;
-use XpwCongruence\EntityName\EntityNameAwareTrait;
 use XpwCongruence\IdHash\IdHashAwareInterface;
 use XpwCongruence\IdHash\IdHashAwareTrait;
 use XpwCongruence\NameKey\NameKeyAwareInterface;
@@ -13,7 +12,7 @@ use XpwCongruence\Timestamp\EntityTimestampInterface;
 use XpwCongruence\Timestamp\EntityTimestampTrait;
 
 class TenantEntity
-    implements  IdentityAwareAccessorInterface,
+    implements  IdentityAwareInterface,
                 EntityTimestampInterface,
                 IdHashAwareInterface,
                 NameKeyAwareInterface
@@ -21,7 +20,6 @@ class TenantEntity
     use EntityTimestampTrait,
         IdHashAwareTrait,
         NameKeyAwareTrait,
-        EntityNameAwareTrait,
         IdentityAwareTrait;
 
     /**
