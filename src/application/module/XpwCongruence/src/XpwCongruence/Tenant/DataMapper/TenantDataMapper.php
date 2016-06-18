@@ -2,10 +2,16 @@
 
 namespace XpwCongruence\Tenant\DataMapper;
 
+use Xpwales\IdentityMap\IdentityMapAwareInterface;
+use Xpwales\IdentityMap\IdentityMapAwareTrait;
 use XpwCongruence\Tenant\TenantEntity;
 
-class TenantDataMapper implements TenantDataMapperInterface
+class TenantDataMapper
+    implements  TenantDataMapperInterface,
+                IdentityMapAwareInterface
 {
+    use IdentityMapAwareTrait;
+
     /**
      * @inheritdoc
      */
