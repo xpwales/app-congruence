@@ -7,14 +7,18 @@ use Xpwales\IdentityMap\IdentityMapAwareTrait;
 use XpwCongruence\IdHash\Generator\IdHashGeneratorAwareInterface;
 use XpwCongruence\IdHash\Generator\IdHashGeneratorAwareTrait;
 use XpwCongruence\Tenant\TenantEntity;
+use Zend\Hydrator\HydratorAwareInterface;
+use Zend\Hydrator\HydratorAwareTrait;
 
 class TenantDataMapper
     implements  TenantDataMapperInterface,
                 IdentityMapAwareInterface,
-                IdHashGeneratorAwareInterface
+                IdHashGeneratorAwareInterface,
+                HydratorAwareInterface
 {
     use IdentityMapAwareTrait,
-        IdHashGeneratorAwareTrait;
+        IdHashGeneratorAwareTrait,
+        HydratorAwareTrait;
 
     /**
      * @inheritdoc
