@@ -84,7 +84,7 @@ class TenantDataHydrator implements HydratorInterface
     {
         if (($object instanceof TenantEntity) === false) {
             $msg = sprintf(
-                'Object subject must be an instance of %s, [%s] given',
+                'Object must be an instance of %s, [%s] given',
                 'TenantEntity',
                 is_object($object) ? get_class($object) : gettype($object)
             );
