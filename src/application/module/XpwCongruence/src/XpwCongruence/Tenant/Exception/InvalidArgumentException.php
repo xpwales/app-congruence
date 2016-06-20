@@ -1,6 +1,6 @@
 <?php
 
-namespace XpwCongruence\TenantEntity\Exception;
+namespace XpwCongruence\Tenant\Exception;
 
 class InvalidArgumentException
     extends \InvalidArgumentException

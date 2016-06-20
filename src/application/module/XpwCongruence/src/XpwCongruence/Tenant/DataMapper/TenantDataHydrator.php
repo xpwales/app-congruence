@@ -3,14 +3,18 @@
 namespace XpwCongruence\Tenant\DataMapper;
 
 use XpwCongruence\Tenant\TenantEntity;
+use Zend\Hydrator\HydratorInterface;
+use XpwCongruence\Tenant\Exception;
 
-class TenantDataHydrator implements TenantDataHydratorInterface
+class TenantDataHydrator implements HydratorInterface
 {
     /**
      * @inheritdoc
      */
-    public function hydrate(array $data, TenantEntity $tenant)
+    public function hydrate(array $data, $object)
     {
+        $tenant = $this->guardObject($object);
+
         foreach ($data as $name => $value) {
             switch ($name) {
                 case 'TEN_id':
@@ -51,9 +55,10 @@ class TenantDataHydrator implements TenantDataHydratorInterface
     /**
      * @inheritdoc
      */
-    public function extract(TenantEntity $tenant)
+    public function extract($object)
     {
-        $data = [];
+        $tenant = $this->guardObject($object);
+        $data   = [];
 
         if ($tenant->getIdentity()->isComplete() === true) {
             $data['TEN_id'] = current($tenant->getIdentity()->getValues());
@@ -68,4 +73,26 @@ class TenantDataHydrator implements TenantDataHydratorInterface
         return $data;
     }
 
+    /**
+     * @param mixed $object
+     *
+     * @throws Exception\InvalidArgumentException on incorrect class
+     *
+     * @return TenantEntity
+     */
+    private function guardObject($object)
+    {
+        if (($object instanceof TenantEntity) === false) {
+            $msg = sprintf(
+                'Object subject must be an instance of %s, [%s] given',
+                'TenantEntity',
+                is_object($object) ? get_class($object) : gettype($object)
+            );
+
+            throw new Exception\InvalidArgumentException($msg);
+        }
+
+        return $object;
+    }
+    
 }//end class

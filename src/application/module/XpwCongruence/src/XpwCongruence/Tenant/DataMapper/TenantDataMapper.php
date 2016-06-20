@@ -4,13 +4,17 @@ namespace XpwCongruence\Tenant\DataMapper;
 
 use Xpwales\IdentityMap\IdentityMapAwareInterface;
 use Xpwales\IdentityMap\IdentityMapAwareTrait;
+use XpwCongruence\IdHash\Generator\IdHashGeneratorAwareInterface;
+use XpwCongruence\IdHash\Generator\IdHashGeneratorAwareTrait;
 use XpwCongruence\Tenant\TenantEntity;
 
 class TenantDataMapper
     implements  TenantDataMapperInterface,
-                IdentityMapAwareInterface
+                IdentityMapAwareInterface,
+                IdHashGeneratorAwareInterface
 {
-    use IdentityMapAwareTrait;
+    use IdentityMapAwareTrait,
+        IdHashGeneratorAwareTrait;
 
     /**
      * @inheritdoc
