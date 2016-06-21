@@ -8,6 +8,7 @@ use Xpwales\IdentityMap\IdentityMapAwareTrait;
 use XpwCongruence\IdHash\Generator\IdHashGeneratorAwareInterface;
 use XpwCongruence\IdHash\Generator\IdHashGeneratorAwareTrait;
 use XpwCongruence\Tenant\DataMapper\Collection\TenantCollection;
+use XpwCongruence\Tenant\DataMapper\Exception;
 use XpwCongruence\Tenant\TenantEntity;
 use Zend\Db\Adapter\AdapterAwareInterface;
 use Zend\Db\Adapter\AdapterAwareTrait;
@@ -32,9 +33,22 @@ class TenantDataMapper
 
     /**
      * @inheritdoc
+     *
+     * @throws Exception\InvalidArgumentException on identity being complete
      */
     public function insert(TenantEntity $tenant)
     {
+        $identity = $tenant->getIdentity();
+        
+        if ($identity->isComplete() === true) {
+            $msg = 'Identity must be in-complete for insert';
+            throw new Exception\InvalidArgumentException($msg);
+        }
+
+        $tenantDataHydrator = $this->getHydrator();
+        $data               = $tenantDataHydrator->extract($tenant);
+        
+        
         // @todo Insert code here
 
         // Fire pre event

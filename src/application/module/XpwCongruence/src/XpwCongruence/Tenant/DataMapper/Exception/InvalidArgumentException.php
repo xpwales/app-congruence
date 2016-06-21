@@ -1,6 +1,6 @@
 <?php
 
-namespace XpwCongruence\TenantEntity\DataMapper\Exception;
+namespace XpwCongruence\Tenant\DataMapper\Exception;
 
 class InvalidArgumentException
     extends \InvalidArgumentException
