@@ -7,6 +7,7 @@ use Xpwales\IdentityMap\IdentityMapAwareInterface;
 use Xpwales\IdentityMap\IdentityMapAwareTrait;
 use XpwCongruence\IdHash\Generator\IdHashGeneratorAwareInterface;
 use XpwCongruence\IdHash\Generator\IdHashGeneratorAwareTrait;
+use XpwCongruence\Tenant\DataMapper\Collection\TenantCollection;
 use XpwCongruence\Tenant\TenantEntity;
 use Zend\Db\Adapter\AdapterAwareInterface;
 use Zend\Db\Adapter\AdapterAwareTrait;
@@ -31,7 +32,8 @@ class TenantDataMapper
     public function insert(TenantEntity $tenant)
     {
 
-        
+
+        return $tenant;
     }
 
     /**
@@ -39,7 +41,8 @@ class TenantDataMapper
      */
     public function update(TenantEntity $tenant)
     {
-        // TODO: Implement update() method.
+
+        return $tenant;
     }
 
     /**
@@ -47,7 +50,8 @@ class TenantDataMapper
      */
     public function delete(TenantEntity $tenant)
     {
-        // TODO: Implement delete() method.
+
+        return $tenant;
     }
 
     /**
@@ -55,7 +59,9 @@ class TenantDataMapper
      */
     public function find(IdentityInterface $identity)
     {
-        // TODO: Implement find() method.
+
+
+        return null;
     }
 
     /**
@@ -63,7 +69,9 @@ class TenantDataMapper
      */
     public function findAll(TenantFindOptionsInterface $options)
     {
-        // TODO: Implement findAll() method.
+        $collection = new TenantCollection();
+
+        return $collection;
     }
 
 }//end class
