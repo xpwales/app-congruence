@@ -62,18 +62,34 @@ class TenantDataMapper
 
     /**
      * @inheritdoc
+     *
+     * @throws Exception\InvalidArgumentException on identity being in-complete
      */
     public function update(TenantEntity $tenant)
     {
+        $identity = $tenant->getIdentity();
+
+        if ($identity->isComplete() === false) {
+            $msg = 'Identity must be complete for update';
+            throw new Exception\InvalidArgumentException($msg);
+        }
 
         return $tenant;
     }
 
     /**
      * @inheritdoc
+     *
+     * @throws Exception\InvalidArgumentException on identity being in-complete
      */
     public function delete(TenantEntity $tenant)
     {
+        $identity = $tenant->getIdentity();
+
+        if ($identity->isComplete() === false) {
+            $msg = 'Identity must be complete for delete';
+            throw new Exception\InvalidArgumentException($msg);
+        }
 
         return $tenant;
     }
