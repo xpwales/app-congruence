@@ -11,6 +11,8 @@ use XpwCongruence\Tenant\DataMapper\Collection\TenantCollection;
 use XpwCongruence\Tenant\TenantEntity;
 use Zend\Db\Adapter\AdapterAwareInterface;
 use Zend\Db\Adapter\AdapterAwareTrait;
+use Zend\EventManager\EventManagerAwareInterface;
+use Zend\EventManager\EventManagerAwareTrait;
 use Zend\Hydrator\HydratorAwareInterface;
 use Zend\Hydrator\HydratorAwareTrait;
 
@@ -19,19 +21,27 @@ class TenantDataMapper
                 IdentityMapAwareInterface,
                 IdHashGeneratorAwareInterface,
                 HydratorAwareInterface,
-                AdapterAwareInterface
+                AdapterAwareInterface,
+                EventManagerAwareInterface
 {
     use IdentityMapAwareTrait,
         IdHashGeneratorAwareTrait,
         HydratorAwareTrait,
-        AdapterAwareTrait;
+        AdapterAwareTrait,
+        EventManagerAwareTrait;
 
     /**
      * @inheritdoc
      */
     public function insert(TenantEntity $tenant)
     {
+        // @todo Insert code here
 
+        // Fire pre event
+
+        // Fire event
+
+        // Fire post event
 
         return $tenant;
     }
