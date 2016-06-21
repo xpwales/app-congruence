@@ -94,7 +94,7 @@ class DirectoryCollection
     {
         $this->init();
 
-        return $this->directories;
+        return new \ArrayIterator(iterator_to_array($this->directories));
     }
 
     /**

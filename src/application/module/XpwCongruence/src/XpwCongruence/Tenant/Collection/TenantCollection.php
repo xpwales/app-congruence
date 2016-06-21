@@ -2,6 +2,8 @@
 
 namespace XpwCongruence\Tenant\DataMapper\Collection;
 
+use Xpwales\Identity\ObjectStorage\IdentityAwareObjectStorage;
+use Xpwales\Identity\ObjectStorage\IdentityAwareObjectStorageInterface;
 use XpwCongruence\Tenant\TenantEntity;
 use Zend\Stdlib\InitializableInterface;
 
@@ -9,7 +11,7 @@ class TenantCollection
     implements \IteratorAggregate, TenantCollectionInterface, InitializableInterface
 {
     /**
-     * @var \SplObjectStorage
+     * @var IdentityAwareObjectStorageInterface
      */
     private $tenants = null;
 
@@ -27,7 +29,10 @@ class TenantCollection
             return null;
         }
 
-        $this->tenants       = new \SplObjectStorage();
+        $this->tenants = new IdentityAwareObjectStorage();
+
+        $this->tenants->setUseDomainspace(false);
+
         $this->isInitialized = true;
     }
 
@@ -46,25 +51,20 @@ class TenantCollection
     public function getIterator()
     {
         $this->init();
-        return $this->tenants;
+
+        return new \ArrayIterator(iterator_to_array($this->tenants));
     }
 
     /**
      * @param TenantEntity $tenant
      * 
-     * @return bool
+     * @return void
      */
     public function attach(TenantEntity $tenant)
     {
         $this->init();
 
-        if ($this->contains($tenant) === true) {
-            return false;
-        }
-
         $this->tenants->attach($tenant);
-
-        return true;
     }
 
     /**
@@ -76,13 +76,7 @@ class TenantCollection
     {
         $this->init();
 
-        if ($this->contains($tenant) === true) {
-            return false;
-        }
-
         $this->tenants->detach($tenant);
-
-        return true;
     }
 
     /**
@@ -93,6 +87,7 @@ class TenantCollection
     public function contains(TenantEntity $tenant)
     {
         $this->init();
+
         return $this->tenants->contains($tenant);
     }
 
@@ -102,6 +97,7 @@ class TenantCollection
     public function current()
     {
         $this->init();
+        
         return $this->tenants->current();
     }
 
