@@ -11,30 +11,30 @@ interface TenantDataMapperInterface
     /**
      * @param TenantEntity $tenant
      *
-     * @return bool
+     * @return TenantEntity
      */
     public function insert(TenantEntity $tenant);
 
     /**
      * @param TenantEntity $tenant
      *
-     * @return bool
+     * @return TenantEntity
      */
     public function update(TenantEntity $tenant);
 
     /**
      * @param TenantEntity $tenant
      *
-     * @return bool
+     * @return TenantEntity
      */
     public function delete(TenantEntity $tenant);
 
     /**
-     * @param int|IdentityInterface $id
+     * @param IdentityInterface $identity
      *
      * @return TenantEntity|null
      */
-    public function find($id);
+    public function find(IdentityInterface $identity);
 
     /**
      * @param array $options

@@ -8,6 +8,7 @@
         "php": ">=5.6",
         "zendframework/zendframework": "~2.4",
         "xpwales/xpwales-identity": "dev-master",
-        "xpwales/xpwales-identity-map": "dev-master"
+        "xpwales/xpwales-identity-map": "dev-master",
+        "xpwales/xpwales-data-mapper": "dev-master"
     }
 }
