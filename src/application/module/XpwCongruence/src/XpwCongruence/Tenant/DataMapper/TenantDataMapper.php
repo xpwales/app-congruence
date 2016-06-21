@@ -2,6 +2,7 @@
 
 namespace XpwCongruence\Tenant\DataMapper;
 
+use Xpwales\Identity\Identity\IdentityInterface;
 use Xpwales\IdentityMap\IdentityMapAwareInterface;
 use Xpwales\IdentityMap\IdentityMapAwareTrait;
 use XpwCongruence\IdHash\Generator\IdHashGeneratorAwareInterface;
@@ -29,7 +30,7 @@ class TenantDataMapper
      */
     public function insert(TenantEntity $tenant)
     {
-        
+
         
     }
 
@@ -52,7 +53,7 @@ class TenantDataMapper
     /**
      * @inheritdoc
      */
-    public function find($id)
+    public function find(IdentityInterface $identity)
     {
         // TODO: Implement find() method.
     }
@@ -60,7 +61,7 @@ class TenantDataMapper
     /**
      * @inheritdoc
      */
-    public function findAll(array $options)
+    public function findAll(TenantFindOptionsInterface $options)
     {
         // TODO: Implement findAll() method.
     }

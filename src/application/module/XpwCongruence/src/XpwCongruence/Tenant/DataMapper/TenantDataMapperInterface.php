@@ -37,10 +37,10 @@ interface TenantDataMapperInterface
     public function find(IdentityInterface $identity);
 
     /**
-     * @param array $options
+     * @param TenantFindOptionsInterface $options
      *
      * @return TenantCollectionInterface
      */
-    public function findAll(array $options);
+    public function findAll(TenantFindOptionsInterface $options);
 
 }//end interface
