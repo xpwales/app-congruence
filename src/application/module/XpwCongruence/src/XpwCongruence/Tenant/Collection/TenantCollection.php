@@ -96,4 +96,13 @@ class TenantCollection
         return $this->tenants->contains($tenant);
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function current()
+    {
+        $this->init();
+        return $this->tenants->current();
+    }
+
 }//end class
