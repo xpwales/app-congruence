@@ -2,8 +2,8 @@
 
 namespace XpwCongruence\Tenant\DataMapper\Collection;
 
-use Xpwales\Identity\ObjectStorage\IdentityAwareObjectStorage;
-use Xpwales\Identity\ObjectStorage\IdentityAwareObjectStorageInterface;
+use Xpwales\Identity\IdentityAware\ObjectStorage\IdentityAwareObjectStorage;
+use Xpwales\Identity\IdentityAware\ObjectStorage\IdentityAwareObjectStorageInterface;
 use XpwCongruence\Tenant\TenantEntity;
 use Zend\Stdlib\InitializableInterface;
 
@@ -29,10 +29,7 @@ class TenantCollection
             return null;
         }
 
-        $this->tenants = new IdentityAwareObjectStorage();
-
-        $this->tenants->setUseDomainspace(false);
-
+        $this->tenants       = new IdentityAwareObjectStorage();
         $this->isInitialized = true;
     }
 
@@ -42,6 +39,7 @@ class TenantCollection
     public function count()
     {
         $this->init();
+
         return $this->tenants->count();
     }
 
@@ -76,7 +74,7 @@ class TenantCollection
     {
         $this->init();
 
-        $this->tenants->detach($tenant);
+        return $this->tenants->detach($tenant);
     }
 
     /**
@@ -89,16 +87,6 @@ class TenantCollection
         $this->init();
 
         return $this->tenants->contains($tenant);
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function current()
-    {
-        $this->init();
-        
-        return $this->tenants->current();
     }
 
 }//end class
