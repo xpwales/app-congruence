@@ -3,13 +3,13 @@
 namespace XpwCongruence\Tenant\DataMapper;
 
 use Xpwales\Identity\Identity\IdentityInterface;
+use Xpwales\Identity\Utils\GuardIdentityIsCompleteStatusTrait;
 use Xpwales\IdentityMap\IdentityMapAwareInterface;
 use Xpwales\IdentityMap\IdentityMapAwareTrait;
 use XpwCongruence\IdHash\Generator\IdHashGeneratorAwareInterface;
 use XpwCongruence\IdHash\Generator\IdHashGeneratorAwareTrait;
 use XpwCongruence\Tenant\DataMapper\Collection\TenantCollection;
-use XpwCongruence\Tenant\DataMapper\Exception;
-use XpwCongruence\Tenant\TenantEntity;
+use XpwCongruence\Tenant\TenantEntityInterface;
 use Zend\Db\Adapter\AdapterAwareInterface;
 use Zend\Db\Adapter\AdapterAwareTrait;
 use Zend\EventManager\EventManagerAwareInterface;
@@ -26,6 +26,7 @@ class TenantDataMapper
                 EventManagerAwareInterface
 {
     use IdentityMapAwareTrait,
+        GuardIdentityIsCompleteStatusTrait,
         IdHashGeneratorAwareTrait,
         HydratorAwareTrait,
         AdapterAwareTrait,
@@ -33,17 +34,12 @@ class TenantDataMapper
 
     /**
      * @inheritdoc
-     *
-     * @throws Exception\InvalidArgumentException on identity being complete
      */
-    public function insert(TenantEntity $tenant)
+    public function insert(TenantEntityInterface $tenant)
     {
         $identity = $tenant->getIdentity();
         
-        if ($identity->isComplete() === true) {
-            $msg = 'Identity must be in-complete for insert';
-            throw new Exception\InvalidArgumentException($msg);
-        }
+        $this->guardIdentityIsIncomplete($identity);
 
         $tenantDataHydrator = $this->getHydrator();
         $data               = $tenantDataHydrator->extract($tenant);
@@ -62,34 +58,24 @@ class TenantDataMapper
 
     /**
      * @inheritdoc
-     *
-     * @throws Exception\InvalidArgumentException on identity being in-complete
      */
-    public function update(TenantEntity $tenant)
+    public function update(TenantEntityInterface $tenant)
     {
         $identity = $tenant->getIdentity();
 
-        if ($identity->isComplete() === false) {
-            $msg = 'Identity must be complete for update';
-            throw new Exception\InvalidArgumentException($msg);
-        }
+        $this->guardIdentityIsComplete($identity);
 
         return $tenant;
     }
 
     /**
      * @inheritdoc
-     *
-     * @throws Exception\InvalidArgumentException on identity being in-complete
      */
-    public function delete(TenantEntity $tenant)
+    public function delete(TenantEntityInterface $tenant)
     {
         $identity = $tenant->getIdentity();
 
-        if ($identity->isComplete() === false) {
-            $msg = 'Identity must be complete for delete';
-            throw new Exception\InvalidArgumentException($msg);
-        }
+        $this->guardIdentityIsComplete($identity);
 
         return $tenant;
     }

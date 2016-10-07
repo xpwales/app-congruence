@@ -4,35 +4,35 @@ namespace XpwCongruence\Tenant\DataMapper;
 
 use Xpwales\Identity\Identity\IdentityInterface;
 use XpwCongruence\Tenant\DataMapper\Collection\TenantCollectionInterface;
-use XpwCongruence\Tenant\TenantEntity;
+use XpwCongruence\Tenant\TenantEntityInterface;
 
 interface TenantDataMapperInterface
 {
     /**
-     * @param TenantEntity $tenant
+     * @param TenantEntityInterface $tenant
      *
-     * @return TenantEntity
+     * @return TenantEntityInterface
      */
-    public function insert(TenantEntity $tenant);
+    public function insert(TenantEntityInterface $tenant);
 
     /**
-     * @param TenantEntity $tenant
+     * @param TenantEntityInterface $tenant
      *
-     * @return TenantEntity
+     * @return TenantEntityInterface
      */
-    public function update(TenantEntity $tenant);
+    public function update(TenantEntityInterface $tenant);
 
     /**
-     * @param TenantEntity $tenant
+     * @param TenantEntityInterface $tenant
      *
-     * @return TenantEntity
+     * @return TenantEntityInterface
      */
-    public function delete(TenantEntity $tenant);
+    public function delete(TenantEntityInterface $tenant);
 
     /**
      * @param IdentityInterface $identity
      *
-     * @return TenantEntity|null
+     * @return TenantEntityInterface|null
      */
     public function find(IdentityInterface $identity);
 
