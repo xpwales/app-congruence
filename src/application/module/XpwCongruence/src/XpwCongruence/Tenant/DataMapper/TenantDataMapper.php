@@ -2,6 +2,8 @@
 
 namespace XpwCongruence\Tenant\DataMapper;
 
+use Xpwales\Identity\Factory\IdentityFactoryAwareInterface;
+use Xpwales\Identity\Factory\IdentityFactoryAwareTrait;
 use Xpwales\Identity\Identity\IdentityInterface;
 use Xpwales\Identity\Utils\GuardIdentityIsCompleteStatusTrait;
 use Xpwales\IdentityMap\IdentityMapAwareInterface;
@@ -23,14 +25,16 @@ class TenantDataMapper
                 IdHashGeneratorAwareInterface,
                 HydratorAwareInterface,
                 AdapterAwareInterface,
-                EventManagerAwareInterface
+                EventManagerAwareInterface,
+                IdentityFactoryAwareInterface
 {
     use IdentityMapAwareTrait,
         GuardIdentityIsCompleteStatusTrait,
         IdHashGeneratorAwareTrait,
         HydratorAwareTrait,
         AdapterAwareTrait,
-        EventManagerAwareTrait;
+        EventManagerAwareTrait,
+        IdentityFactoryAwareTrait;
 
     /**
      * @inheritdoc
