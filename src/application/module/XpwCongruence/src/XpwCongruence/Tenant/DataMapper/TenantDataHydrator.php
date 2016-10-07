@@ -2,7 +2,7 @@
 
 namespace XpwCongruence\Tenant\DataMapper;
 
-use XpwCongruence\Tenant\TenantEntity;
+use XpwCongruence\Tenant\TenantEntityInterface;
 use Zend\Hydrator\HydratorInterface;
 use XpwCongruence\Tenant\Exception;
 
@@ -78,11 +78,11 @@ class TenantDataHydrator implements HydratorInterface
      *
      * @throws Exception\InvalidArgumentException on incorrect class
      *
-     * @return TenantEntity
+     * @return TenantEntityInterface
      */
     private function guardObject($object)
     {
-        if (($object instanceof TenantEntity) === false) {
+        if (($object instanceof TenantEntityInterface) === false) {
             $msg = sprintf(
                 'Object must be an instance of %s, [%s] given',
                 'TenantEntity',
