@@ -54,9 +54,7 @@ class TenantCollection
     }
 
     /**
-     * @param TenantEntity $tenant
-     * 
-     * @return void
+     * @inheritdoc
      */
     public function attach(TenantEntity $tenant)
     {
@@ -66,9 +64,7 @@ class TenantCollection
     }
 
     /**
-     * @param TenantEntity $tenant
-     *
-     * @return bool
+     * @inheritdoc
      */
     public function detach(TenantEntity $tenant)
     {
@@ -78,9 +74,7 @@ class TenantCollection
     }
 
     /**
-     * @param TenantEntity $tenant
-     *
-     * @return bool
+     * @inheritdoc
      */
     public function contains(TenantEntity $tenant)
     {
