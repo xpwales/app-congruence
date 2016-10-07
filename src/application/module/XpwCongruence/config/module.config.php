@@ -7,4 +7,9 @@ return array(
             'identityMap'      => '\XpwCongruence\IdentityMap\Service\IdentityMapServiceFactory',
         ),
     ),
+    'xpwCongurence' => array(
+        'tenant' => array(
+            'domainspace' => 'XpwCongruenceTenant', // Can be any string which is unique to other domainspaces
+        ),
+    ),
 );
