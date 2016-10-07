@@ -2,11 +2,12 @@
 
 namespace XpwCongruence\Tenant\DataMapper;
 
+use Xpwales\Identity\Factory\IdentityFactoryAwareInterface;
 use Xpwales\Identity\Identity\IdentityInterface;
 use XpwCongruence\Tenant\DataMapper\Collection\TenantCollectionInterface;
 use XpwCongruence\Tenant\TenantEntityInterface;
 
-interface TenantDataMapperInterface
+interface TenantDataMapperInterface extends IdentityFactoryAwareInterface
 {
     /**
      * @param TenantEntityInterface $tenant
