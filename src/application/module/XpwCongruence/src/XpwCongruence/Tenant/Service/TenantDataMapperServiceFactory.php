@@ -13,7 +13,10 @@ class TenantDataMapperServiceFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $dataMapper = new TenantDataMapper();
+        $dataMapper  = new TenantDataMapper();
+        $identityMap = $serviceLocator->get('identityMap');
+
+        $dataMapper->setIdentityMap($identityMap);
 
         return $dataMapper;
     }

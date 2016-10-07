@@ -16,6 +16,8 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
+        $tenantDataMapper = $this->getServiceLocator()->get('tenantDataMapper');
+
         return new ViewModel();
     }
 }
