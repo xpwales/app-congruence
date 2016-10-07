@@ -21,9 +21,7 @@ class TenantEntity
     private $sysAdminNotes = null;
 
     /**
-     * @param string|null $notes
-     *
-     * @return string
+     * @inheritdoc
      */
     public function setSysAdminNotes($notes)
     {
@@ -40,7 +38,7 @@ class TenantEntity
     }
 
     /**
-     * @return null|string
+     * @inheritdoc
      */
     public function getSysAdminNotes()
     {
