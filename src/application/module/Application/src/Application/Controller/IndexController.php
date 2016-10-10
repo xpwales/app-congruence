@@ -10,6 +10,7 @@
 namespace Application\Controller;
 
 use XpwCongruence\Tenant\DataMapper\TenantDataMapperInterface;
+use Zend\Db\Adapter\Adapter;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
@@ -20,6 +21,7 @@ class IndexController extends AbstractActionController
         $sm               = $this->getServiceLocator();
         /** @var TenantDataMapperInterface $tenantDataMapper */
         $tenantDataMapper = $sm->get('tenantDataMapper');
+
 
         return new ViewModel();
     }

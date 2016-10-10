@@ -7,6 +7,7 @@ use Xpwales\IdentityMap\IdentityMapInterface;
 use XpwCongruence\Tenant\DataMapper\TenantDataHydrator;
 use XpwCongruence\Tenant\DataMapper\TenantDataMapper;
 use XpwCongruence\Tenant\Factory\TenantEntityFactoryInterface;
+use Zend\Db\Adapter\Adapter;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -25,11 +26,14 @@ class TenantDataMapperServiceFactory implements FactoryInterface
         $dataHydrator        = new TenantDataHydrator();
         /** @var TenantEntityFactoryInterface $tenantEntityFactory */
         $tenantEntityFactory = $serviceLocator->get('tenantEntityFactory');
+        /** @var Adapter $dbAdapter */
+        $dbAdapter           = $serviceLocator->get('dbAdapter');
 
         $dataMapper->setIdentityMap($identityMap)
                    ->setIdentityFactory($identityFactory)
                    ->setHydrator($dataHydrator)
-                   ->setTenantEntityFactory($tenantEntityFactory);
+                   ->setTenantEntityFactory($tenantEntityFactory)
+                   ->setDbAdapter($dbAdapter);
 
         return $dataMapper;
     }

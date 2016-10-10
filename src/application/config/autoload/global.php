@@ -12,4 +12,12 @@
  */
 
 return array(
+    'service_manager' => array(
+        'factories' => array(
+            'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory',
+        ),
+        'aliases' => array(
+            'dbAdapter' => 'Zend\Db\Adapter\Adapter',
+        ),
+    ),
 );

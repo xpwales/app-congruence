@@ -20,4 +20,12 @@ return array(
         'display_not_found_reason' => false,
         'display_exceptions'       => false,
     ),
+    'db' => array(
+        'driver'       => 'Pdo_Mysql',
+        'hostname'     => 'localhost',
+        'database'     => 'xxxxxxxxxx',
+        'username'     => 'xxxxxxxxxx',
+        'password'     => 'xxxxxxxxxx',
+        'characterset' => 'UTF-8',
+    ),
 );
