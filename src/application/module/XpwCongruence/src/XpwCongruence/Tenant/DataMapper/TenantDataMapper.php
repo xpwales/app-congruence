@@ -15,6 +15,7 @@ use XpwCongruence\Tenant\Factory\TenantEntityFactoryAwareTrait;
 use XpwCongruence\Tenant\TenantEntityInterface;
 use Zend\Db\Adapter\AdapterAwareInterface;
 use Zend\Db\Adapter\AdapterAwareTrait;
+use Zend\Db\Sql\Sql;
 use Zend\EventManager\EventManagerAwareInterface;
 use Zend\EventManager\EventManagerAwareTrait;
 use Zend\Hydrator\HydratorAwareInterface;
@@ -49,9 +50,21 @@ class TenantDataMapper
 
         $tenantDataHydrator = $this->getHydrator();
         $data               = $tenantDataHydrator->extract($tenant);
-        
-        
-        // @todo Insert code here
+
+        $sqlObj = new Sql($this->adapter);
+        $insert = $sqlObj->insert('TEN_tenant');
+        $dbConn = $this->adapter->getDriver()->getConnection();
+
+        $insert->values($data);
+
+        $sqlStr = $sqlObj->buildSqlString($insert, $this->adapter);
+
+        $dbConn->execute($sqlStr);
+
+        $lastGenId = (int) $dbConn->getLastGeneratedValue();
+
+        $tenant->getIdentity()->setValue($lastGenId);
+
 
         // Fire pre event
 
