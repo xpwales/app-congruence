@@ -10,6 +10,8 @@ use Xpwales\IdentityMap\IdentityMapAwareTrait;
 use XpwCongruence\IdHash\Generator\IdHashGeneratorAwareInterface;
 use XpwCongruence\IdHash\Generator\IdHashGeneratorAwareTrait;
 use XpwCongruence\Tenant\DataMapper\Collection\TenantCollection;
+use XpwCongruence\Tenant\Factory\TenantEntityFactoryAwareInterface;
+use XpwCongruence\Tenant\Factory\TenantEntityFactoryAwareTrait;
 use XpwCongruence\Tenant\TenantEntityInterface;
 use Zend\Db\Adapter\AdapterAwareInterface;
 use Zend\Db\Adapter\AdapterAwareTrait;
@@ -24,7 +26,8 @@ class TenantDataMapper
                 IdHashGeneratorAwareInterface,
                 HydratorAwareInterface,
                 AdapterAwareInterface,
-                EventManagerAwareInterface
+                EventManagerAwareInterface,
+                TenantEntityFactoryAwareInterface
 {
     use IdentityMapAwareTrait,
         GuardIdentityIsCompleteStatusTrait,
@@ -32,7 +35,8 @@ class TenantDataMapper
         HydratorAwareTrait,
         AdapterAwareTrait,
         EventManagerAwareTrait,
-        IdentityFactoryAwareTrait;
+        IdentityFactoryAwareTrait,
+        TenantEntityFactoryAwareTrait;
 
     /**
      * @inheritdoc
