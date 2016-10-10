@@ -9,7 +9,6 @@
 
 namespace Application\Controller;
 
-use XpwCongruence\Tenant\DataMapper\TenantDataMapper;
 use XpwCongruence\Tenant\DataMapper\TenantDataMapperInterface;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
