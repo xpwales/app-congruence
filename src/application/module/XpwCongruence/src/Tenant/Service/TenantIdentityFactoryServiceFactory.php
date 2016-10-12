@@ -2,17 +2,17 @@
 
 namespace XpwCongruence\Tenant\Service;
 
+use Interop\Container\ContainerInterface;
 use XpwCongruence\Tenant\Identity\TenantIdentityFactory;
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
+use Zend\ServiceManager\ServiceManager;
 
 class TenantIdentityFactoryServiceFactory implements FactoryInterface
 {
-    /**
-     * @inheritdoc
-     */
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
+        /** @var ServiceManager $serviceLocator */
+        $serviceLocator  = $container->get('ServiceManager');
         $identityFactory = new TenantIdentityFactory();
         $config          = $serviceLocator->get('config');
 

@@ -13,7 +13,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Application\\": "src/application/module/Application/src/"
+            "Application\\": "src/application/module/Application/src/",
+            "XpwCongruence\\": "src/application/module/XpwCongruence/src/"
         }
     }
 }

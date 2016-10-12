@@ -2,16 +2,13 @@
 
 namespace XpwCongruence\IdentityMap\Service;
 
+use Interop\Container\ContainerInterface;
 use Xpwales\IdentityMap\IdentityMap;
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
 
 class IdentityMapServiceFactory implements FactoryInterface
 {
-    /**
-     * @inheritdoc
-     */
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         $identityMap = new IdentityMap();
 

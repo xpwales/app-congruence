@@ -1,25 +1,27 @@
 <?php
-/**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
- */
 
 namespace Application\Controller;
 
 use XpwCongruence\Tenant\DataMapper\TenantDataMapperInterface;
 use XpwCongruence\Tenant\Factory\TenantEntityFactoryInterface;
-use Zend\Db\Adapter\Adapter;
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\ServiceManager\ServiceManager;
 use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
+    private $config = null;
+
+    public function __construct($config)
+    {
+        $this->config = $config;
+    }
+
     public function indexAction()
     {
-        $sm               = $this->getServiceLocator();
+        $config           = $this->config;
+        /** @var ServiceManager $sm */
+        $sm               = $config['ServiceManager'];
         /** @var TenantDataMapperInterface $tenantDataMapper */
         $tenantDataMapper = $sm->get('tenantDataMapper');
 

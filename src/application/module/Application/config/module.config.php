@@ -5,6 +5,7 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 namespace Application;
+use Application\Service\ControllerServiceFactory;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
 use Zend\ServiceManager\Factory\InvokableFactory;
@@ -35,7 +36,7 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            Controller\IndexController::class => InvokableFactory::class,
+            Controller\IndexController::class => ControllerServiceFactory::class,
         ],
     ],
     'view_manager' => [

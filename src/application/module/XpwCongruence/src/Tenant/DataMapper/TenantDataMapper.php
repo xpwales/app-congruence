@@ -62,14 +62,14 @@ class TenantDataMapper
         $sqlStr = $sqlObj->buildSqlString($insertObj, $this->adapter);
 
 
-        $event->setTarget($this)
-              ->setParam('tenant', $tenant);
+        $event->setTarget($this);
+        $event->setParam('tenant', $tenant);
 
         //
         // Pre event
         //
         $event->setName('insert.pre');
-        $eventManager->trigger($event);
+        $eventManager->triggerEvent($event);
 
         //
         // Execute event
@@ -84,7 +84,7 @@ class TenantDataMapper
         // Post event
         //
         $event->setName('insert.post');
-        $eventManager->trigger($event);
+        $eventManager->triggerEvent($event);
 
         return $tenant;
     }
