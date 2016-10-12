@@ -1,49 +1,17 @@
-<!DOCTYPE html>
+<?= $this->doctype() ?>
+
 <html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
+    <head>
+        <meta charset="utf-8">
+        <?= $this->headTitle('Congruance')->setSeparator(' - ')->setAutoEscape(false) ?>
 
-    <?php echo $this->headTitle($this->translate('Congruence - RESTful Identity Management Service'))->setSeparator(' - ')->setAutoEscape(false) ?>
-
-    <?php
-        $this->headMeta()
-             ->appendName('viewport', 'width=device-width, initial-scale=1.0, maximum-scale=1.0')
-             ->appendHttpEquiv('X-UA-Compatible', 'IE=edge');
-
-        $this->headLink()
-             ->prependStylesheet($this->basePath('/css/custom-styles.css'))
-             ->prependStylesheet($this->basePath('/css/bootstrap.min.css'));
-
-        $this->headScript()
-             ->prependFile($this->basePath('/plugins/html5shiv/dist/html5shiv.js'),   'text/javascript', array('conditional' => 'lt IE 9',));
-    ?>
-
-    <!-- Head Meta -->
-    <?php echo $this->headMeta() ?>
-
-    <!-- Styles -->
-    <?php echo $this->headLink() ?>
-
-    <!-- Scripts -->
-    <?php echo $this->headScript() ?>
-</head>
-
-<!-- ======== @Region: body ======== -->
-<body>
-
-<!-- ======== @Region: #content ======== -->
-<div id="content">
-    <div class="container">
-        <?php echo $this->content; ?>
-    </div>
-</div>
-
-<!--Scripts -->
-<?php echo $this->inlineScript()
-    ->prependFile($this->basePath('/js/bootstrap.min.js'))
-    ->prependFile($this->basePath('/js/jquery.min.js'));
-?>
-
-</body>
+        <?= $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+    </head>
+    <body>
+        <?= $this->content ?>
+        <?= $this->inlineScript() ?>
+    </body>
 </html>

@@ -10,5 +10,10 @@
         "xpwales/xpwales-identity": "dev-master",
         "xpwales/xpwales-identity-map": "dev-master",
         "xpwales/xpwales-data-mapper": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Application\\": "src/application/module/Application/src/"
+        }
     }
 }
