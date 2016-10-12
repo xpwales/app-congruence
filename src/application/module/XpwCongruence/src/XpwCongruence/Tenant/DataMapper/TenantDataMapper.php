@@ -16,6 +16,7 @@ use XpwCongruence\Tenant\TenantEntityInterface;
 use Zend\Db\Adapter\AdapterAwareInterface;
 use Zend\Db\Adapter\AdapterAwareTrait;
 use Zend\Db\Sql\Sql;
+use Zend\EventManager\Event;
 use Zend\EventManager\EventManagerAwareInterface;
 use Zend\EventManager\EventManagerAwareTrait;
 use Zend\Hydrator\HydratorAwareInterface;
@@ -48,29 +49,42 @@ class TenantDataMapper
         
         $this->guardIdentityIsIncomplete($identity);
 
+        $eventManager       = $this->getEventManager();
+        $event              = new Event();
         $tenantDataHydrator = $this->getHydrator();
         $data               = $tenantDataHydrator->extract($tenant);
+        $dbConn             = $this->adapter->getDriver()->getConnection();
+        $sqlObj             = new Sql($this->adapter);
+        $insertObj          = $sqlObj->insert('TEN_tenant');
 
-        $sqlObj = new Sql($this->adapter);
-        $insert = $sqlObj->insert('TEN_tenant');
-        $dbConn = $this->adapter->getDriver()->getConnection();
+        $insertObj->values($data);
 
-        $insert->values($data);
+        $sqlStr = $sqlObj->buildSqlString($insertObj, $this->adapter);
 
-        $sqlStr = $sqlObj->buildSqlString($insert, $this->adapter);
 
+        $event->setTarget($this)
+              ->setParam('tenant', $tenant);
+
+        //
+        // Pre event
+        //
+        $event->setName('insert.pre');
+        $eventManager->trigger($event);
+
+        //
+        // Execute event
+        //
         $dbConn->execute($sqlStr);
 
         $lastGenId = (int) $dbConn->getLastGeneratedValue();
 
         $tenant->getIdentity()->setValue($lastGenId);
 
-
-        // Fire pre event
-
-        // Fire event
-
-        // Fire post event
+        //
+        // Post event
+        //
+        $event->setName('insert.post');
+        $eventManager->trigger($event);
 
         return $tenant;
     }
