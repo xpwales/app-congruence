@@ -6,6 +6,7 @@
     "description": "Identity management REST service",
     "require": {
         "php": ">=5.6",
+        "robmorgan/phinx": "dev-master",
         "zendframework/zendframework": "~3.0",
         "xpwales/xpwales-identity": "dev-master",
         "xpwales/xpwales-identity-map": "dev-master",
