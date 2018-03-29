@@ -1,6 +1,6 @@
 <?php
 
-namespace XpwCongruence\EnabledStatus\Exception;
+namespace XpwCongruence\ModelUtility\EnabledStatus\Exception;
 
 class InvalidArgumentException
     extends \InvalidArgumentException

@@ -1,8 +1,8 @@
 <?php
 
-namespace XpwCongruence\EnabledStatus;
+namespace XpwCongruence\ModelUtility\EnabledStatus;
 
-use XpwCongruence\EnabledStatus\Exception;
+use XpwCongruence\ModelUtility\EnabledStatus\Exception;
 
 trait EnabledStatusAwareTrait
 {
@@ -12,7 +12,7 @@ trait EnabledStatusAwareTrait
     private $isEnabled = null;
 
     /**
-     * @see XpwCongruence\EnabledStatus\EnabledStatusSetterAwareInterface
+     * @see XpwCongruence\ModelUtility\EnabledStatus\EnabledStatusAwareInterface
      *
      * @param bool $flag
      *
@@ -25,7 +25,7 @@ trait EnabledStatusAwareTrait
     }
 
     /**
-     * @see XpwCongruence\EnabledStatus\EnabledStatusGetterAwareInterface
+     * @see XpwCongruence\ModelUtility\EnabledStatus\EnabledStatusAwareInterface
      *
      * @throws Exception\RuntimeException on unset status
      *
