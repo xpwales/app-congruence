@@ -13,7 +13,7 @@ class TenantIdentityFactory implements IdentityFactoryInterface
     /**
      * @inheritdoc
      */
-    public function createIdentity()
+    public function createIdentity($values=null)
     {
         $identity    = new GenericIdentity();
         $domainspace = $this->getDomainspace();

@@ -3,9 +3,9 @@
 namespace XpwCongruence\Tenant;
 
 use Xpwales\Identity\IdentityAware\IdentityAwareTrait;
-use XpwCongruence\IdHash\IdHashAwareTrait;
-use XpwCongruence\NameKey\NameKeyAwareTrait;
-use XpwCongruence\Timestamp\EntityTimestampTrait;
+use XpwCongruence\ModelUtility\IdHash\IdHashAwareTrait;
+use XpwCongruence\ModelUtility\NameKey\NameKeyAwareTrait;
+use XpwCongruence\ModelUtility\Timestamp\EntityTimestampTrait;
 
 class TenantEntity
     implements TenantEntityInterface

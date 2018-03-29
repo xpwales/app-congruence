@@ -1,6 +1,6 @@
 <?php
 
-namespace XpwCongruence\IdHash;
+namespace XpwCongruence\ModelUtility\IdHash;
 
 use XpwCongruence\ModelUtility\IdHash\Exception;
 
