@@ -6,7 +6,7 @@ return array(
             'tenantIdentityFactory' => 'XpwCongruence\Tenant\Service\TenantIdentityFactoryServiceFactory',
             'tenantEntityFactory'   => 'XpwCongruence\Tenant\Service\TenantEntityFactoryServiceFactory',
             'tenantDataMapper'      => 'XpwCongruence\Tenant\Service\TenantDataMapperServiceFactory',
-            'identityMap'           => 'XpwCongruence\IdentityMap\Service\IdentityMapServiceFactory',
+            'identityMap'           => 'XpwCongruence\Service\IdentityMapServiceFactory',
         ),
     ),
     'xpwCongurence' => array(

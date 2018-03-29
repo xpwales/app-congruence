@@ -12,7 +12,7 @@ trait EnabledStatusAwareTrait
     private $isEnabled = null;
 
     /**
-     * @see XpwCongruence\ModelUtility\EnabledStatus\EnabledStatusAwareInterface
+     * @see \XpwCongruence\ModelUtility\EnabledStatus\EnabledStatusAwareInterface
      *
      * @param bool $flag
      *
@@ -25,7 +25,7 @@ trait EnabledStatusAwareTrait
     }
 
     /**
-     * @see XpwCongruence\ModelUtility\EnabledStatus\EnabledStatusAwareInterface
+     * @see \XpwCongruence\ModelUtility\EnabledStatus\EnabledStatusAwareInterface
      *
      * @throws Exception\RuntimeException on unset status
      *
